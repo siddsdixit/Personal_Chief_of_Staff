@@ -1,4 +1,32 @@
-# Personal Chief of Staff
+<div align="center">
+
+# `personal-chief-of-staff`
+
+### trust velocity, not busier
+
+**An AI chief of staff that closes your open loops before they cost you the room.**
+
+Five scheduled routines. Nine on-demand commands. One ledger that never lets an old problem look new.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/siddsdixit/Personal_Chief_of_Staff?style=social)](https://github.com/siddsdixit/Personal_Chief_of_Staff)
+[![Built with](https://img.shields.io/badge/built_with-Claude_Code-4fc3f7)](https://claude.com/claude-code)
+
+> **The cost was never inbox zero. It was trust velocity.**
+>
+> A small ask sat past a day. A counterpart learned about a call after the thinking had
+> already closed. Separately, each one was easy to forgive. Together they are how people
+> stop believing you will close the loop.
+>
+> Run it on your calendar, email, Slack, and spend. It drafts in your voice, never sends
+> without you, and asks one honest question every Sunday: is your loop-closing getting
+> better or worse, and with whom.
+
+![Personal Chief of Staff demo](docs/cos-explainer.gif)
+
+</div>
+
+---
 
 An AI chief of staff built on [Claude Code](https://claude.com/claude-code) that runs your
 calendar, email, Slack, and spend triage on a schedule, drafts replies in your own writing
