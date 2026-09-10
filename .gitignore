@@ -15,3 +15,7 @@ logbook/archive.yaml
 # Anything you dump here while testing
 scratch/
 *.local.md
+
+# Local source used to render docs/cos-explainer.{gif,mp4}. Not part of the
+# published template — keep it out of the public repo.
+remotion/
