@@ -3,372 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Chief of Staff - Trust Velocity, Not Busier</title>
+    <title>Personal Chief of Staff — Trust Velocity</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text: #f5f5f5;
+            --text-dim: #999;
+            --accent: #4fc3f7;
+            --red: #f44336;
+            --green: #4caf50;
+            --orange: #ff9800;
+            --purple: #9c27b0;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
-            color: #1a1a1a;
-            background: #fafafa;
+            overflow-x: hidden;
         }
 
+        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+        a:hover { opacity: 0.8; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* HERO */
         .hero {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            color: white;
-            padding: 80px 20px;
+            padding: 120px 20px 80px;
             text-align: center;
+            background: linear-gradient(135deg, rgba(79,195,247,0.1) 0%, rgba(79,195,247,0.05) 100%);
+            border-bottom: 1px solid rgba(79,195,247,0.2);
         }
 
         .hero h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 20px;
-            line-height: 1.2;
+            background: linear-gradient(90deg, var(--accent), #64b5f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
         }
 
-        .hero .subheading {
-            font-size: 1.4rem;
-            font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
+        .hero .tagline {
+            font-size: 1.3rem;
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .ritual {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #444;
+        .badges {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
         }
 
-        .ritual p {
-            margin-bottom: 20px;
-        }
-
-        .ritual .time {
-            font-weight: 600;
-            color: #1a1a1a;
-        }
-
-        .ritual .systems {
-            color: #d32f2f;
+        .badge {
+            background: var(--bg-card);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 500;
         }
 
-        .problem {
-            background: #fff;
-            padding: 60px 20px;
-            margin: 60px 0;
-        }
-
-        .problem .content {
-            max-width: 900px;
-            margin: 0 auto;
-            font-size: 1.05rem;
-            line-height: 1.8;
-        }
-
-        .problem h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #1a1a1a;
-        }
-
-        .problem .challenge {
-            background: #f5f5f5;
-            padding: 30px;
-            border-left: 4px solid #d32f2f;
-            margin: 30px 0;
-            font-size: 1rem;
-        }
-
-        .solution {
-            background: #1a1a1a;
-            color: white;
-            padding: 60px 20px;
-        }
-
-        .solution .content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .solution h2 {
-            font-size: 2rem;
-            margin-bottom: 40px;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .feature {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .feature h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
-            color: #4fc3f7;
-        }
-
-        .feature p {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .what-inside {
-            background: #fff;
-            padding: 60px 20px;
-        }
-
-        .what-inside .content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .what-inside h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #1a1a1a;
-        }
-
-        .triggers, .commands {
-            margin: 30px 0;
-        }
-
-        .triggers h3, .commands h3 {
-            font-size: 1.3rem;
-            margin: 20px 0 15px;
-            color: #1a1a1a;
-        }
-
-        .trigger-list, .command-list {
-            list-style: none;
-            columns: 2;
-            gap: 40px;
-        }
-
-        .trigger-list li, .command-list li {
-            background: #f9f9f9;
-            padding: 12px 16px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            break-inside: avoid;
-        }
-
-        .trigger-list li:before {
-            content: "● ";
-            color: #4fc3f7;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .command-list li:before {
-            content: "/ ";
-            color: #4fc3f7;
-            font-weight: bold;
-            margin-right: 8px;
-        }
-
-        .cta {
-            background: #4fc3f7;
-            padding: 60px 20px;
-            text-align: center;
-            color: #1a1a1a;
-        }
-
-        .cta h2 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
+        .badge.green { border-color: var(--green); color: var(--green); }
+        .badge.orange { border-color: var(--orange); color: var(--orange); }
+        .badge.purple { border-color: var(--purple); color: var(--purple); }
 
         .cta-buttons {
             display: flex;
-            gap: 20px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 32px;
-            font-size: 1rem;
+            padding: 12px 28px;
+            border-radius: 6px;
             font-weight: 600;
-            border: none;
-            border-radius: 4px;
+            font-size: 0.95rem;
             cursor: pointer;
+            border: none;
+            transition: all 0.3s;
             text-decoration: none;
             display: inline-block;
-            transition: all 0.3s ease;
         }
 
         .btn-primary {
-            background: #1a1a1a;
-            color: white;
+            background: var(--accent);
+            color: var(--bg);
         }
 
         .btn-primary:hover {
-            background: #0a0a0a;
+            background: #64b5f6;
             transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(79,195,247,0.3);
         }
 
         .btn-secondary {
-            background: white;
-            color: #1a1a1a;
-            border: 2px solid #1a1a1a;
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
 
         .btn-secondary:hover {
-            background: #f5f5f5;
+            background: rgba(79,195,247,0.1);
         }
 
-        .footer {
-            background: #1a1a1a;
-            color: white;
+        /* NARRATIVE */
+        .narrative {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .narrative p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .ritual-time { color: var(--accent); font-weight: 600; }
+        .ritual-systems { color: var(--red); font-weight: 600; }
+
+        /* PROBLEM SECTION */
+        .section {
+            padding: 80px 20px;
+            margin: 60px 0;
+        }
+
+        .section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: var(--accent);
+            text-align: center;
+        }
+
+        .problem {
+            background: var(--bg-card);
+            border: 1px solid rgba(244,67,54,0.3);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            line-height: 1.8;
+        }
+
+        .problem p {
+            font-size: 1.05rem;
+            margin-bottom: 20px;
+            color: var(--text-dim);
+        }
+
+        .problem strong { color: var(--text); }
+
+        /* FEATURES GRID */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .feature {
+            background: var(--bg-card);
+            border: 1px solid rgba(79,195,247,0.2);
+            border-radius: 10px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .feature:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 24px rgba(79,195,247,0.1);
+            transform: translateY(-4px);
+        }
+
+        .feature .icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .feature h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--accent);
+        }
+
+        .feature p {
+            font-size: 0.95rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        /* VIDEO/GIF */
+        .media-container {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid rgba(79,195,247,0.2);
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .media-container h3 {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--accent);
+        }
+
+        .media-container img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 12px 40px rgba(79,195,247,0.2);
+        }
+
+        /* INVENTORY */
+        .inventory {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .inventory-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--green);
+            border-bottom: 2px solid rgba(76,175,80,0.3);
+            padding-bottom: 12px;
+        }
+
+        .inventory-list {
+            list-style: none;
+        }
+
+        .inventory-list li {
+            background: var(--bg-card);
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            border-left: 3px solid var(--green);
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        .inventory-list li:before {
+            content: "→ ";
+            color: var(--green);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* STATS */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 60px auto;
+            max-width: 1000px;
+        }
+
+        .stat {
+            background: var(--bg-card);
+            border: 1px solid rgba(79,195,247,0.2);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat .label {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        /* CTA FINAL */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(79,195,247,0.15) 0%, rgba(156,39,176,0.1) 100%);
+            border: 1px solid rgba(79,195,247,0.2);
+            border-radius: 12px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 80px auto;
+            max-width: 900px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid rgba(79,195,247,0.1);
             padding: 40px 20px;
             text-align: center;
+            color: var(--text-dim);
             font-size: 0.9rem;
-            opacity: 0.7;
+        }
+
+        footer a { color: var(--accent); }
+
+        /* ANIMATIONS */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature, .stat, .inventory-list li {
+            animation: fadeIn 0.6s ease-out forwards;
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero .subheading {
-                font-size: 1.1rem;
-            }
-
-            .trigger-list, .command-list {
-                columns: 1;
-            }
+            .hero h1 { font-size: 2.2rem; }
+            .hero .tagline { font-size: 1.1rem; }
+            .inventory { grid-template-columns: 1fr; }
+            .stats { grid-template-columns: 1fr; }
+            .cta-buttons { flex-direction: column; }
+            .btn { width: 100%; }
         }
     </style>
 </head>
 <body>
+    <!-- HERO -->
     <div class="hero">
-        <h1>Personal Chief of Staff</h1>
-        <p class="subheading">Trust velocity, not busier. An AI system that remembers what your morning brain will forget.</p>
+        <div class="container">
+            <h1>Personal Chief of Staff</h1>
+            <p class="tagline">Trust velocity, not busier. An AI system that remembers what your morning brain will forget.</p>
+
+            <div class="badges">
+                <span class="badge">Claude Code</span>
+                <span class="badge green">5 Triggers</span>
+                <span class="badge orange">9 Commands</span>
+                <span class="badge purple">Ledger State</span>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff" class="btn btn-primary">Clone on GitHub</a>
+                <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff#setup" class="btn btn-secondary">Read SETUP.md</a>
+            </div>
+        </div>
     </div>
 
-    <div class="ritual">
-        <p>A hotel desk at <span class="time">6:40</span>. Pleasanton some weeks. New York others. Same ritual either way.</p>
-        <p><span class="systems">Calendar. Email. Slack. Ramp. Jira.</span> Sometimes Confluence when a decision had been buried and you were the last to find it. Coffee cooling while you told yourself you were catching up. Approvals. Hiring loops. Board prep. Reviews.</p>
+    <!-- NARRATIVE -->
+    <div class="narrative">
+        <p>A hotel desk at <span class="ritual-time">6:40</span>. Pleasanton some weeks. New York others. Same ritual either way.</p>
+        <p><span class="ritual-systems">Calendar. Email. Slack. Ramp. Jira.</span> Sometimes Confluence when a decision had been buried and you were the last to find it. Coffee cooling while you told yourself you were catching up. Approvals. Hiring loops. Board prep. Reviews.</p>
         <p>Busy in five systems and still late to the thing that would matter by noon.</p>
-        <div style="text-align: center; margin: 40px 0;">
-            <img src="../cos-explainer.gif" alt="Personal Chief of Staff flow" style="max-width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    </div>
+
+    <!-- MEDIA -->
+    <div class="media-container">
+        <h3>See It In Motion</h3>
+        <img src="../cos-explainer.gif" alt="Personal Chief of Staff animated explainer" style="max-width: 100%; border-radius: 8px;">
+    </div>
+
+    <!-- PROBLEM -->
+    <div class="section">
+        <h2>The Problem</h2>
+        <div class="problem">
+            <p><strong>Not inbox zero. Trust velocity.</strong></p>
+            <p>The misses never announced themselves as crises. A small ask sat past a day. A counterpart learned about a call after the thinking had already closed. A spend approval waited until it became furniture.</p>
+            <p>Separately, each one was easy to forgive. Together they are how people stop believing you will close the loop. That is the stake. Not busier. <strong>Still trusted in the rooms that decide your year.</strong></p>
         </div>
     </div>
 
-    <div class="problem">
-        <div class="content">
-            <h2>The Problem</h2>
-            <p>Not inbox zero. <strong>Trust velocity.</strong></p>
-            <div class="challenge">
-                <p>The misses never announced themselves as crises. A small ask sat past a day. A counterpart learned about a call after the thinking had already closed. A spend approval waited until it became furniture. Separately, each one was easy to forgive. Together they are how people stop believing you will close the loop.</p>
+    <!-- FEATURES -->
+    <div class="section">
+        <h2>What's Inside</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="icon">📋</div>
+                <h3>Morning Brief</h3>
+                <p>One page instead of five half-truths. Hottest asks, calendar prep, drafts waiting, unanswered asks from last week surfaced.</p>
             </div>
-            <p>Hopping tabs feels like leadership when it is only motion. The cost shows up later, in rooms you care about. A peer who stopped looping you in early because you were hard to close with. A manager who does not need you to be busier. They need you to be reliable on the small asks that protect credibility.</p>
-            <p>You needed a system that would not let open loops go quiet while you hopped tabs and called the hopping work.</p>
-        </div>
-    </div>
 
-    <div class="solution">
-        <div class="content">
-            <h2>What's Inside</h2>
-            <div class="features">
-                <div class="feature">
-                    <h3>Morning Brief</h3>
-                    <p>One page instead of five half-truths. Hottest carried-over asks on top. Calendar prep. Mail and Slack as drafts, not sends. Unanswered asks from last week surfaced.</p>
-                </div>
-                <div class="feature">
-                    <h3>Drafts in Your Voice</h3>
-                    <p>Every email and Slack message lands in drafts. Your gate. Your voice. No autonomous sends that create new mess. The routine reads how you actually write.</p>
-                </div>
-                <div class="feature">
-                    <h3>The Ledger</h3>
-                    <p>State that survives between 7am and 5pm. Open items get a first-seen date that never rewrites. Age turns to heat. Closures move to archive. Silence does not count.</p>
-                </div>
-                <div class="feature">
-                    <h3>Sunday Report</h3>
-                    <p>One number you cannot dismiss: is your loop-closing getting better or worse, and with whom. Exactly one recommendation. It is allowed to say the trend is bad. That permission is why you come back.</p>
-                </div>
-                <div class="feature">
-                    <h3>Hourly Pulse</h3>
-                    <p>Through the day, a check on the next hour so meetings do not introduce themselves by your walking in cold. Meeting prep. Email drafts. Slack pulse.</p>
-                </div>
-                <div class="feature">
-                    <h3>Everything is Markdown</h3>
-                    <p>No build pipeline. If you cannot read the rules, you do not have an operating model. You have a mood. Audit what you ship.</p>
-                </div>
+            <div class="feature">
+                <div class="icon">✍️</div>
+                <h3>Your Voice</h3>
+                <p>Every message arrives in drafts. Your gate. No autonomous sends. The routine reads how you actually write.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">📊</div>
+                <h3>The Ledger</h3>
+                <p>State that survives between morning and evening. First-seen dates never rewrite. Age turns to heat. Silence doesn't count.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">📈</div>
+                <h3>Sunday Report</h3>
+                <p>Is your loop-closing getting better or worse, with whom, exactly where? One number. One recommendation. Permission to say the trend is bad.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">⏰</div>
+                <h3>Hourly Pulse</h3>
+                <p>Through the day, check the next hour so meetings don't introduce themselves by walking in cold. Meeting prep. Drafts. Slack pulse.</p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">📝</div>
+                <h3>Everything is Markdown</h3>
+                <p>No build pipeline. If you cannot read the rules, you have a mood, not an operating model. Audit what you ship.</p>
             </div>
         </div>
     </div>
 
-    <div class="what-inside">
-        <div class="content">
-            <h2>Five Triggers + Nine Commands</h2>
+    <!-- STATS -->
+    <div class="stats">
+        <div class="stat">
+            <div class="number">5</div>
+            <div class="label">Scheduled Triggers (cloud-based)</div>
+        </div>
+        <div class="stat">
+            <div class="number">9</div>
+            <div class="label">On-Demand Commands</div>
+        </div>
+        <div class="stat">
+            <div class="number">∞</div>
+            <div class="label">Ledger State (Slack Canvas)</div>
+        </div>
+        <div class="stat">
+            <div class="number">100%</div>
+            <div class="label">Auditable (all markdown)</div>
+        </div>
+    </div>
 
-            <div class="triggers">
-                <h3>Scheduled Routines (Cloud-Triggered)</h3>
-                <ul class="trigger-list">
+    <!-- INVENTORY -->
+    <div class="section">
+        <h2>Complete Inventory</h2>
+        <div class="inventory">
+            <div class="inventory-section">
+                <h3>Scheduled Routines</h3>
+                <ul class="inventory-list">
                     <li>Morning Briefing (7:00 AM)</li>
-                    <li>Hourly Pulse (during work hours)</li>
+                    <li>Hourly Pulse (work hours)</li>
                     <li>EOD Summary (5:45 PM)</li>
                     <li>Evening Urgent Check (9:00 PM)</li>
-                    <li>Weekly Pattern Report (Sunday 7:00 PM)</li>
+                    <li>Weekly Pattern Report (Sun 7PM)</li>
                 </ul>
             </div>
 
-            <div class="commands">
-                <h3>On-Demand Commands (Any Time)</h3>
-                <ul class="command-list">
-                    <li>cos scan - full status check</li>
-                    <li>cos-brief - decision brief from email/Slack/calendar</li>
-                    <li>cos-delegate - task + Jira ticket + logbook</li>
-                    <li>cos-find-time - mutual availability</li>
-                    <li>cos-focus - book focus time blocks</li>
-                    <li>cos-followup - nudge tracking on asks</li>
-                    <li>cos-thread - summarize Slack threads</li>
-                    <li>cos-spend - spending overview (Ramp)</li>
-                    <li>setup-cos - guided 8-phase interview setup</li>
+            <div class="inventory-section">
+                <h3>On-Demand Commands</h3>
+                <ul class="inventory-list">
+                    <li>/cos scan — full status</li>
+                    <li>/cos-brief — decision brief</li>
+                    <li>/cos-delegate — task + Jira</li>
+                    <li>/cos-find-time — availability</li>
+                    <li>/cos-focus — book focus time</li>
+                    <li>/cos-followup — nudge tracking</li>
+                    <li>/cos-thread — summarize threads</li>
+                    <li>/cos-spend — Ramp overview</li>
+                    <li>/setup-cos — guided 8-phase setup</li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div class="cta">
+    <!-- CTA -->
+    <div class="cta-section">
         <h2>Build Your Seat</h2>
-        <p>The payoff is not a prettier morning. It is still being trusted in the rooms that decide your year.</p>
+        <p>The payoff is not a prettier morning. It is still being trusted in the rooms that decide your year. If you lead a portfolio of signals and still start in five tabs, you do not have a productivity gap. You have an unbuilt seat.</p>
         <div class="cta-buttons">
-            <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff" class="btn btn-primary">Clone on GitHub</a>
-            <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff#setup" class="btn btn-secondary">Read SETUP.md</a>
+            <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff" class="btn btn-primary">Clone the Repo</a>
+            <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff#quick-start" class="btn btn-secondary">Quick Start</a>
         </div>
     </div>
 
-    <div class="footer">
-        <p>Built for executives who lead a portfolio of signals. Runs on Claude Code. MIT License.</p>
-        <p style="margin-top: 10px;">Read the full article: <a href="#" style="color: #4fc3f7; text-decoration: none;">"Why Every Executive Should Build a Personal Chief of Staff"</a></p>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+        <p>Personal Chief of Staff by Siddharth Dixit. MIT License.</p>
+        <p>Built on Claude Code. Everything is auditable. <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff">GitHub</a> · <a href="https://github.com/siddsdixit/Personal_Chief_of_Staff/blob/main/SETUP.md">Setup Docs</a></p>
+    </footer>
 </body>
 </html>
