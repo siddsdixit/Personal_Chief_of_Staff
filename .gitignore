@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+
+# Your real, filled-in files. Never commit these.
+config.yaml
+voice.md
+logbook/active.yaml
+logbook/archive.yaml
+
+# Local Claude Code settings that may reference your machine/account specifics
+.claude/settings.local.json
+
+# Anything you dump here while testing
+scratch/
+*.local.md

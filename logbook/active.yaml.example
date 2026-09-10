@@ -1,0 +1,38 @@
+# Active logbook: delegations, commitments, decisions, follow-ups
+# Copy to active.yaml and edit as you work. Archive completed items to archive.yaml.
+# This file is gitignored; never commit your real logbook to a public repo.
+
+delegated:
+  # Tasks you've assigned to others. Status: open, in_progress, completed.
+  # DEL-NNN | what | owner | due | status
+  - id: DEL-001
+    what: "Review Q4 roadmap proposal"
+    owner: "Jordan Kim"
+    due: "2026-09-15"
+    status: "open"
+
+committed:
+  # Things you promised to do for someone. Status: open, in_progress, completed.
+  # COM-NNN | what | for_whom | due | status
+  - id: COM-001
+    what: "Send hiring plan update"
+    for_whom: "Casey Rivera"
+    due: "2026-09-12"
+    status: "open"
+
+decisions:
+  # Durable record of decisions you've made, with who was involved.
+  # DEC-NNN | what | date | who
+  - id: DEC-001
+    what: "Approved new on-call rotation for Platform team"
+    date: "2026-09-08"
+    who: "Jordan Kim, Sam Chen"
+
+followups:
+  # Things to follow up on with someone.
+  # FUP-NNN | what | with_whom | next_action | last_nudge
+  - id: FUP-001
+    what: "Engineering compensation review"
+    with_whom: "Casey Rivera"
+    next_action: "Confirm budget by EOW"
+    last_nudge: null

@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "gmail": {
+      "enabled": true,
+      "description": "Gmail for email triage and drafts"
+    },
+    "google-calendar": {
+      "enabled": true,
+      "description": "Google Calendar for scheduling and calendar insights"
+    },
+    "slack": {
+      "enabled": true,
+      "description": "Slack for channel monitoring, DMs, and ledger canvas"
+    },
+    "ramp": {
+      "enabled": false,
+      "description": "Optional: Ramp for spend tracking and approvals. Remove this section if not using."
+    },
+    "jira": {
+      "enabled": false,
+      "description": "Optional: Jira/Atlassian for ticket creation in /cos-delegate. Remove if not using."
+    }
+  },
+  "permissions": {
+    "gmail": ["read", "compose"],
+    "calendar": ["read", "write"],
+    "slack": ["read", "compose"],
+    "ramp": ["read", "approve"],
+    "jira": ["read", "create"]
+  }
+}

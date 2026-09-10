@@ -1,0 +1,134 @@
+# Chief of Staff - Configuration
+# Copy this file to config.yaml and fill in your own values, then commit that copy
+# to your PRIVATE fork/branch only. config.yaml is gitignored in this template on purpose.
+#
+# Don't want to hand-edit YAML? Run the /setup-cos command instead. It interviews you
+# and writes config.yaml and voice.md for you. See SETUP.md.
+
+user:
+  name: "Jordan Lee"
+  role: "VP Engineering"
+  company: "Acme Corp"
+  timezone: "America/Los_Angeles"
+  slack_user_id: "U00000000"      # Your Slack member ID (Slack profile > ... > Copy member ID)
+  email: "jordan@acme.example"
+
+# Priority senders - emails from these addresses get drafted replies
+email:
+  priority_senders:
+    # Board / parent company (executive tone)
+    - "casey@acme-holdings.example"     # Casey Rivera, CEO (manager)
+    - "board-member@parentco.example"   # Board contact
+    # C-suite peers (team tone)
+    - "peer-cpo@acme.example"           # Chief Product Officer
+    - "peer-cfo@acme.example"           # CFO
+    - "peer-cro@acme.example"           # CRO
+    # Direct reports (team tone)
+    - "report-one@acme.example"
+    - "report-two@acme.example"
+    # Cross-functional
+    - "cross-functional@acme.example"
+    # Executive assistant
+    - "ea@acme.example"
+
+  # Tone mapping: which domains/senders get executive mode vs team mode
+  executive_domains:
+    - "parentco.example"                # Parent company / board domain gets executive tone
+  executive_senders:
+    - "casey@acme-holdings.example"      # Your manager/CEO gets executive tone
+  labels_to_watch:
+    - "INBOX"
+    - "IMPORTANT"
+
+  # Optional: if you use an email client with its own AI triage labels (e.g. Superhuman),
+  # map its label IDs here so the pulse routine doesn't re-classify what's already sorted.
+  # Leave blank / delete this block if you don't use one.
+  smart_labels:
+    respond: ""        # -> NEEDS-RESPONSE
+    waiting: ""         # -> FYI (waiting on others)
+    meeting: ""          # -> FYI
+    news: ""             # -> skip
+    social: ""           # -> skip
+    pitch: ""            # -> skip
+    marketing: ""        # -> skip
+    auto_archived: ""    # -> skip
+
+# Calendar preferences
+calendar:
+  focus_time:
+    min_block_hours: 2
+    preferred_times: ["morning"]   # morning, afternoon, or any
+    preferred_days: ["tuesday", "wednesday", "thursday"]
+  prep_minutes_before: 15
+  calendars: ["primary"]
+  meeting_duration_preference: 25  # prefer 25 or 50 min over 30/60
+
+# Slack monitoring
+slack:
+  priority_channels:
+    - id: "C00000001"
+      name: "leadership-team"
+    - id: "C00000002"
+      name: "eng-leadership"
+    - id: "C00000003"
+      name: "all-hands"
+  watch_keywords:
+    - "outage"
+    - "blocker"
+    - "urgent"
+    - "escalation"
+  output_channel: "U00000000"  # DM to self, usually same as user.slack_user_id
+
+# Finance (optional - remove this block if you don't use Ramp)
+ramp:
+  auto_approve_below: 500
+  alert_threshold: 5000
+  flag_categories:
+    - "travel"
+    - "software"
+
+# Jira / Atlassian (optional - remove this block if you don't use it)
+jira:
+  project_keys:
+    - ""                     # e.g., "ENG"
+  sprint_board: ""           # Board name or ID for sprint tracking
+  triage_project: ""         # Project key for incoming bugs/incidents
+
+# Gmail labels (create these manually in Gmail first, then paste their IDs here)
+# Find label IDs via Gmail Settings > Labels, or the Gmail API label list.
+gmail_labels:
+  urgent: ""
+  needs_response: ""
+  fyi: ""
+  delegate: ""
+
+# Reminders
+reminders:
+  pre_meeting:
+    enabled: true
+    minutes_before: 45       # Slack DM this many minutes before meeting
+    output: "slack_dm"
+  unanswered_email:
+    enabled: true
+    times: ["13:00", "16:00"]
+  eod_deadline:
+    enabled: true
+    time: "16:30"
+  approval_reminder:
+    enabled: true
+
+# Ledger (open-loop tracking). See docs/LEDGER.md.
+# If you don't use Slack canvases, set this to a local file path instead and adapt the
+# triggers' read/write instructions accordingly (see docs/LEDGER.md "Without Slack").
+logbook:
+  slack_canvas_id: ""
+  slack_canvas_url: ""
+
+# Schedule (all times in your configured timezone)
+schedule:
+  morning_briefing: "07:00"
+  eod_summary: "17:45"
+  urgent_check: "21:00"
+  approvals_check: ["10:00", "15:00"]
+  slack_pulse_hours: 2
+  weekly_preview: "sunday 19:00"
